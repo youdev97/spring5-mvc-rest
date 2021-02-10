@@ -1,23 +1,25 @@
 package guru.springfamework.bootstrap;
 
+import guru.springfamework.domain.Category;
+import guru.springfamework.repositories.CategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import guru.springfamework.domain.Category;
-import guru.springfamework.repositories.CategoryRepository;
-
+/**
+ * Created by jt on 9/24/17.
+ */
 @Component
-public class Bootstrap implements CommandLineRunner {
+public class Bootstrap implements CommandLineRunner{
 
-	private CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
-	public Bootstrap(CategoryRepository categoryRepository) {
-		this.categoryRepository = categoryRepository;
-	}
+    public Bootstrap(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		Category fruits = new Category();
+    @Override
+    public void run(String... args) throws Exception {
+        Category fruits = new Category();
         fruits.setName("Fruits");
 
         Category dried = new Category();
@@ -38,7 +40,8 @@ public class Bootstrap implements CommandLineRunner {
         categoryRepository.save(exotic);
         categoryRepository.save(nuts);
 
-        System.out.println("Data Loaded = " + categoryRepository.count());
-	}
 
+        System.out.println("Data Loaded = " + categoryRepository.count() );
+
+    }
 }
